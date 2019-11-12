@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   {% load staticfiles %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="Jakub Mróz">
+  <meta name="author" content="">
   <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-  <title>Jakub Mróz</title>
+  <title>{{detailblog.title}}</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
 
@@ -21,7 +22,7 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'home'%}">Jakub Mróz</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,49 +32,27 @@
           <a class="nav-item nav-link" href="https://github.com/mintas123">GitHub</a>
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/jakub-mróz-36979b157/">LinkedIn</a>
           <a class="nav-item nav-link" href="{% static 'resume.png'%}">Resume</a>
-          <a class="nav-item nav-link" href="{% url 'allblogs'%}">Blog</a>
+          <a class="nav-item nav-link active" href="{% url 'allblogs'%}">Blog</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main role="main">
-
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hi, i'm Kuba.</h1>
-        <p class="lead text-muted">Hey, I like to do stuff.</p>
-        <p>
-          <a href="mailto:kumroz@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-        <img class="img-fluid" src="{% static 'logo.png'%}" alt="logo" height="200"/>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row">
-
-          {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="{{job.image.url}}" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">{{job.summary}}</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-        </div>
+    <div class="container">
+      <div>
+        <h1 class="text-center pt-5">{{detailblog.title}}</h1>
+        <p class="text-right font-italic">{{detailblog.pub_date}}</p>
+        <img class="img-fluid" src="{{detailblog.image.url}}" alt="photo" >
+        <br>
+        <p>{{detailblog.body}}</p>
       </div>
     </div>
 
   </main>
 
   <footer class="text-muted">
-    <div class="container text-center ">
+    <div class="container text-center">
       <p> ©Jakub Mróz {% now "Y"%}</p>
     </div>
   </footer>
