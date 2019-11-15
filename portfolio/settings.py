@@ -134,6 +134,6 @@ MEDIA_URL = '/media/'
 
 # PUTTING ON THE SERVER #
 # try:
-#     from local_settings import *
+#     from .local_settings import *
 # except ImportError:
 #     pass
